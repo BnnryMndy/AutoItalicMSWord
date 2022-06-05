@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+    <PropertyGroup>
+        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+        <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+        <ProjectGuid>{9A4CB45E-636C-408A-B286-972D74AFF143}</ProjectGuid>
+        <OutputType>WinExe</OutputType>
+        <RootNamespace>AutoItalicMSWord</RootNamespace>
+        <AssemblyName>AutoItalicMSWord</AssemblyName>
+        <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+        <FileAlignment>512</FileAlignment>
+        <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+        <WarningLevel>4</WarningLevel>
+        <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+        <LangVersion>9</LangVersion>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+        <PlatformTarget>AnyCPU</PlatformTarget>
+        <DebugSymbols>true</DebugSymbols>
+        <DebugType>full</DebugType>
+        <Optimize>false</Optimize>
+        <OutputPath>bin\Debug\</OutputPath>
+        <DefineConstants>DEBUG;TRACE</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+        <PlatformTarget>AnyCPU</PlatformTarget>
+        <DebugType>pdbonly</DebugType>
+        <Optimize>true</Optimize>
+        <OutputPath>bin\Release\</OutputPath>
+        <DefineConstants>TRACE</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+    </PropertyGroup>
+    <ItemGroup>
+        <Reference Include="System" />
+        <Reference Include="System.Core" />
+        <Reference Include="System.Data" />
+        <Reference Include="System.Xml" />
+        <Reference Include="System.Xaml">
+            <RequiredTargetFramework>4.0</RequiredTargetFramework>
+        </Reference>
+        <Reference Include="WindowsBase" />
+        <Reference Include="PresentationCore" />
+        <Reference Include="PresentationFramework" />
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Include="App\App.xaml.cs">
+          <DependentUpon>App.xaml</DependentUpon>
+          <SubType>Code</SubType>
+        </Compile>
+        <Compile Include="Command.cs" />
+        <Compile Include="Extensions\WordExtentions.cs" />
+        <Compile Include="MainWindow\MainWindow.xaml.cs">
+          <DependentUpon>MainWindow.xaml</DependentUpon>
+          <SubType>Code</SubType>
+        </Compile>
+        <Compile Include="MainWindow\MainWindowModel.cs" />
+        <Compile Include="MainWindow\MainWindowViewModel.cs" />
+    </ItemGroup>
+    <ItemGroup>
+        <None Include="App.config" />
+    </ItemGroup>
+    <ItemGroup>
+      <COMReference Include="Word">
+        <Guid>{00020905-0000-0000-C000-000000000046}</Guid>
+        <VersionMajor>8</VersionMajor>
+        <VersionMinor>7</VersionMinor>
+        <Lcid>0</Lcid>
+        <WrapperTool>tlbimp</WrapperTool>
+        <Isolated>False</Isolated>
+        <EmbedInteropTypes>True</EmbedInteropTypes>
+      </COMReference>
+    </ItemGroup>
+    <ItemGroup>
+      <Page Include="MainWindow\MainWindow.xaml">
+        <Generator>MSBuild:Compile</Generator>
+        <SubType>Designer</SubType>
+      </Page>
+    </ItemGroup>
+    <ItemGroup>
+      <ApplicationDefinition Include="App\App.xaml">
+        <Generator>MSBuild:Compile</Generator>
+        <SubType>Designer</SubType>
+      </ApplicationDefinition>
+    </ItemGroup>
+    <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
